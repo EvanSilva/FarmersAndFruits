@@ -44,8 +44,9 @@ public class ServiceFruit {
 
         Optional<Fruit> frutaParaSerEliminada = Fruit.find("name = ?1", nombre).firstResultOptional();
 
-        frutaParaSerEliminada.get().delete();
-
+        if (frutaParaSerEliminada.isPresent()) {
+            frutaParaSerEliminada.get().delete();
+        }
     }
 
     public Optional<Fruit> getFruit(String nombre){
